@@ -117,7 +117,7 @@ You do not need to handle any other user input failures. We will expand on the r
 
 ### 6. Managing Logged In State
 
-Upon receiving a successful `200` response for register or login (and alerting the user), the user should be automatically navigated back to the home page using react-router's `useNavigate` hook. Furthermore, they should *no longer* see "Login" and "Register" Nav links -- they should only see a "Logout" Nav link. Similarly, when a user is logged out they should only see "Login" and "Register" Nav links; not "Logout".
+Upon receiving a successful `200` response **for *either* register or login** (and alerting the user), the user should be automatically navigated back to the home page using react-router's `useNavigate` hook. Furthermore, they should *no longer* see "Login" and "Register" Nav links -- they should only see a "Logout" Nav link. Similarly, when a user is logged out they should only see "Login" and "Register" Nav links; not "Logout".
 
 Refreshing the page should **not** affect the user's logged-in state. **Only** (1) *closing* the browser tab or (2) the 1-hour session expiring, should result in a user having to log in again. You do not have to handle this second case.
 
