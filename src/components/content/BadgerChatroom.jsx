@@ -79,7 +79,7 @@ export default function BadgerChatroom(props) {
                 /* TODO: Complete displaying of messages. */
                 <Row>
                 {messages.map((message) => {
-                     return <Col sm={12} md={6} lg={4} key={message.id}><BadgerMessage {...message}></BadgerMessage></Col>
+                     return <Col sm={12} md={6} lg={4} key={message.id}><BadgerMessage {...message} reload={loadMessages}></BadgerMessage></Col>
                 })} </Row>
                 :
                 <>
