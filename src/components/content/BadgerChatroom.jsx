@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import BadgerMessage from "./BadgerMessage";
-import { Col, FormControl, Pagination, Row, Button, Container } from "react-bootstrap";
+import { Col, FormControl, Pagination, Row, Button, Container, FormLabel } from "react-bootstrap";
 import BadgerLoginStatusContext from "../contexts/BadgerLoginStatusContext";
 import { useRef } from "react";
 
@@ -66,10 +66,10 @@ export default function BadgerChatroom(props) {
             /* TODO: Allow an authenticated user to create a post. */
             loginStatus ? 
             <Col sm={12} md={6} lg={4}>
-                <p>Post Title</p>
-                <FormControl type='text' ref={titleRef}></FormControl>
-                <p>Post Content</p>
-                <FormControl type="text" ref={contentRef}></FormControl> 
+                <FormLabel>Post Title
+                <FormControl type='text' ref={titleRef}></FormControl></FormLabel>
+                <FormLabel>Post Content
+                <FormControl type="text" ref={contentRef}></FormControl></FormLabel>
                 <Button onClick={() => handleCreate()}>Create Post</Button>
             </Col> :
             null

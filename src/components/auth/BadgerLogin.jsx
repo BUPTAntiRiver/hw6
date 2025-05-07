@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useRef } from 'react';
-import { Button, FormControl } from 'react-bootstrap';
+import { Button, FormControl, FormLabel } from 'react-bootstrap';
 import BadgerLoginStatusContext from '../contexts/BadgerLoginStatusContext';
 import { useNavigate } from 'react-router';
 
@@ -53,11 +53,11 @@ export default function BadgerLogin() {
     }
 
     return <>
-        <h1>Login</h1>
-        <p>Username</p>
+        <h1>Login</h1> 
+        <FormLabel>Username
         <FormControl type='text' ref={usernameRef}></FormControl>
-        <p>Password</p>
-        <FormControl type='password' ref={passwordRef}></FormControl>
+        </FormLabel>
+        <FormLabel>Password<FormControl type='password' ref={passwordRef}></FormControl></FormLabel> 
         <Button variant='primary' onClick={() => handleLogin()}>Login</Button>
     </>
 }

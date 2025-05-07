@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Button, FormControl } from 'react-bootstrap';
+import { Button, FormControl, FormLabel } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 
 export default function BadgerRegister() {
@@ -55,12 +55,12 @@ export default function BadgerRegister() {
     
     return <>
         <h1>Register</h1>
-        <p>Username</p>
-        <FormControl type='text' ref={usernameRef}></FormControl>
-        <p>Password</p>
-        <FormControl type='password' ref={passwordRef}></FormControl>
-        <p>Confirm Password</p>
-        <FormControl type='password' ref={confirmPasswordRef}></FormControl>
+        <FormLabel>Username
+        <FormControl type='text' ref={usernameRef}></FormControl></FormLabel>
+        <FormLabel>Password
+        <FormControl type='password' ref={passwordRef}></FormControl></FormLabel>
+        <FormLabel>Confirm Password
+        <FormControl type='password' ref={confirmPasswordRef}></FormControl></FormLabel>
         <Button variant='primary' onClick={() => handleRegister()}>Register</Button>
     </>
 }
