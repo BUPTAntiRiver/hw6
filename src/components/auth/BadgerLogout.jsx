@@ -1,7 +1,9 @@
 
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import BadgerLoginStatusContext from '../contexts/BadgerLoginStatusContext';
 
 export default function BadgerLogout() {
+    const [loginStatus, setLoginStatus] = useContext(BadgerLoginStatusContext); 
 
     useEffect(() => {
         fetch('https://cs571.org/rest/s25/hw6/logout', {
@@ -12,6 +14,8 @@ export default function BadgerLogout() {
             credentials: "include"
         }).then(res => res.json()).then(json => {
             // Maybe you need to do something here?
+            setLoginStatus(false);
+            sessionStorage.setItem("loginStatus", "false"); 
         })
     }, []);
 
