@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import BadgerMessage from "./BadgerMessage";
 import { Col, FormControl, Pagination, Row, Button, Container } from "react-bootstrap";
 import BadgerLoginStatusContext from "../contexts/BadgerLoginStatusContext";
+import { useRef } from "react";
 
 
 export default function BadgerChatroom(props) {
@@ -25,6 +26,37 @@ export default function BadgerChatroom(props) {
     // The BadgerChatroom doesn't unload/reload when switching
     // chatrooms, only its props change! Try it yourself.
     useEffect(loadMessages, [props, active]);
+    const titleRef = useRef();
+    const contentRef = useRef();
+
+    const handleCreate = () => {
+        const title = titleRef.current.value;
+        const content = contentRef.current.value;
+
+        if (!title || !content) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        fetch(`https://cs571.org/rest/s25/hw6/messages?chatroom=${props.name}`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "X-CS571-ID": CS571.getBadgerId(),
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title: title,
+                content: content
+            })
+        })
+        .then((res) => {
+            if (res.status === 200) {
+                alert("Message created successfully!");
+                loadMessages();
+            }
+        })
+    }
 
     return <>
         <h1>{props.name} Chatroom</h1>
@@ -35,10 +67,10 @@ export default function BadgerChatroom(props) {
             loginStatus ? 
             <Col sm={12} md={6} lg={4}>
                 <p>Post Title</p>
-                <FormControl type='text'></FormControl>
+                <FormControl type='text' ref={titleRef}></FormControl>
                 <p>Post Content</p>
-                <FormControl type="text"></FormControl> 
-                <Button>Create Post</Button>
+                <FormControl type="text" ref={contentRef}></FormControl> 
+                <Button onClick={() => handleCreate()}>Create Post</Button>
             </Col> :
             null
         }
