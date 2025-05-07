@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 export default function BadgerLogout() {
 
     useEffect(() => {
-        fetch('https://cs571api.cs.wisc.edu/rest/s25/hw6/logout', {
+        fetch('https://cs571.org/rest/s25/hw6/logout', {
             method: 'POST',
             headers: {
                 "X-CS571-ID": CS571.getBadgerId()
