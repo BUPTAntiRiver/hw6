@@ -11,7 +11,11 @@ function BadgerLayout(props) {
     // You'll probably want to see if there is an existing
     // user in sessionStorage first. If so, that should
     // be your initial loginStatus state.
-    const [loginStatus, setLoginStatus] = useState(undefined) 
+    const [loginStatus, setLoginStatus] = useState(false); 
+    const currentStatus = sessionStorage.getItem("loginStatus") !== "";
+    if (currentStatus !== loginStatus) {
+        setLoginStatus(currentStatus);
+    }
 
     return (
         <div>

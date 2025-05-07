@@ -41,7 +41,7 @@ export default function BadgerLogin() {
         .then((res) => {
             if (res.status === 200) {
                 alert("Login successful!");
-                sessionStorage.setItem("loginStatus", "true");
+                sessionStorage.setItem("loginStatus", username);
                 setLoginStatus(true);
                 navigate("/");
             } else if (res.status === 401) {

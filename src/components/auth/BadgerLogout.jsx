@@ -15,7 +15,7 @@ export default function BadgerLogout() {
         }).then(res => res.json()).then(json => {
             // Maybe you need to do something here?
             setLoginStatus(false);
-            sessionStorage.setItem("loginStatus", "false"); 
+            sessionStorage.setItem("loginStatus", ""); 
         })
     }, []);
 
